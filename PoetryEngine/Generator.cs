@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using PCLStorage;
+//using PCLStorage;
 
 namespace PoetryEngine {
     public class Generator {
@@ -50,7 +50,7 @@ namespace PoetryEngine {
 
         public static string Gen() {
             Random random = new Random();
-            int amount = random.Next(3,7);
+            int amount = random.Next(3,4);
             var poemB = new StringBuilder();
 
             for(int a = 0; a < amount; ++a) {
@@ -119,10 +119,10 @@ namespace PoetryEngine {
 
         public static async void Load() {
             dic.Load();
-            IFolder rootFolder = FileSystem.Current.LocalStorage;
-            IFolder folder = await rootFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
-            if((await folder.CheckExistsAsync(fileName)) == ExistenceCheckResult.FileExists) {
-                IFile file = await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
+            //IFolder rootFolder = FileSystem.Current.LocalStorage;
+            //IFolder folder = await rootFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
+            if(false/*(await folder.CheckExistsAsync(fileName)) == ExistenceCheckResult.FileExists*/) {
+                //IFile file = await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
                 //structures = JsonConvert.DeserializeObject<List<string>>(await file.ReadAllTextAsync());
             } else {
                 structures = new List<PoemStructure> {
@@ -170,11 +170,11 @@ namespace PoetryEngine {
         }
         
         public static async void Save() {
-            dic.Save();
-            IFolder rootFolder = FileSystem.Current.LocalStorage;
-            IFolder folder = await rootFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
-            IFile file = await folder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
-            await file.WriteAllTextAsync(JsonConvert.SerializeObject(structures, Formatting.Indented));
+            //dic.Save();
+            //IFolder rootFolder = FileSystem.Current.LocalStorage;
+            //IFolder folder = await rootFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
+            //IFile file = await folder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
+            //await file.WriteAllTextAsync(JsonConvert.SerializeObject(structures, Formatting.Indented));
         }
     }
 }

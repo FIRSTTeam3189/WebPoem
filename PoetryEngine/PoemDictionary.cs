@@ -18,11 +18,11 @@ namespace PoetryEngine {
         }
 
         public async void Load() {
-            IFolder rootFolder = FileSystem.Current.LocalStorage;
-            IFolder folder = await rootFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
-            if((await folder.CheckExistsAsync(fileName)) == ExistenceCheckResult.FileExists) {
-                IFile file = await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
-                Words = JsonConvert.DeserializeObject<List<Word>>(await file.ReadAllTextAsync());
+            //IFolder rootFolder = FileSystem.Current.LocalStorage;
+            //IFolder folder = await rootFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
+            if(false/*(await folder.CheckExistsAsync(fileName)) == ExistenceCheckResult.FileExists*/) {
+                //IFile file = await folder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
+                //Words = JsonConvert.DeserializeObject<List<Word>>(await file.ReadAllTextAsync());
             } else
                 Words = new List<Word>() {
                     new Word("snow flake", WordType.Object){
@@ -427,11 +427,11 @@ namespace PoetryEngine {
         }
 
         public async void Save() {
-            IFolder rootFolder = FileSystem.Current.LocalStorage;
-            IFolder folder = await rootFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
-            IFile file = await folder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
-            await file.WriteAllTextAsync(JsonConvert.SerializeObject(Words, Formatting.Indented));
-            System.IO.File.WriteAllText(fileName, JsonConvert.SerializeObject(Words, Formatting.Indented));
+            //IFolder rootFolder = FileSystem.Current.LocalStorage;
+            //IFolder folder = await rootFolder.CreateFolderAsync(folderName, CreationCollisionOption.OpenIfExists);
+            //IFile file = await folder.CreateFileAsync(fileName, CreationCollisionOption.ReplaceExisting);
+            //await file.WriteAllTextAsync(JsonConvert.SerializeObject(Words, Formatting.Indented));
+            //System.IO.File.WriteAllText(fileName, JsonConvert.SerializeObject(Words, Formatting.Indented));
         }
 
         public List<Word> GetWords() {
