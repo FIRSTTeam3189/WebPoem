@@ -54,13 +54,7 @@ namespace PoetryEngine {
             var poemB = new StringBuilder();
 
             for(int a = 0; a < amount; ++a) {
-#if DEBUG
-                var structureparts = GetStructure();
-                poemB.Append("s" + structureparts.Item2 + ": ");
-                var structure = structureparts.Item1;
-#else
                 var structure = GetStructure();
-#endif
 
                 foreach(var part in structure.Parts) {
                     if(part.Item1.Type != WordType.Word) {
@@ -139,11 +133,7 @@ namespace PoetryEngine {
             }
         }
 
-#if DEBUG
-        public static Tuple<PoemStructure, int> GetStructure() {
-#else
         public static PoemStructure GetStructure() {
-#endif
             double[] weights = new double[structures.Count()];
             double total = 0.0D;
             for(int i = 0; i < weights.Length; ++i) {
@@ -154,19 +144,11 @@ namespace PoetryEngine {
             for(int i = 0; i < weights.Length; ++i) {
                 if(r < weights[i]) {
                     usedStructs.Add(i);
-#if DEBUG
-                    return new Tuple<PoemStructure, int>(structures[i], i);
-#else
                     return structures[i];
-#endif
                 }
                 r -= weights[i];
             }
-#if DEBUG
-            return new Tuple<PoemStructure, int>(new PoemStructure("%pn %tn %nn ."), -1);
-#else
             return new PoemStructure("%pn %tn %nn .");
-#endif
         }
         
         public static async void Save() {
