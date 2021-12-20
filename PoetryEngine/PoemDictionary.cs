@@ -91,7 +91,7 @@ namespace PoetryEngine {
                         } },
                     new Word("camera", WordType.Object){
                         GrammerRules = new List<GrammerRule> {
-                            new GrammerRule() { Data = "camera", Type = GrammerRuleType.Plural }
+                            new GrammerRule() { Data = "cameras", Type = GrammerRuleType.Plural }
                         } },
                     new Word("drill press", WordType.Object){
                         GrammerRules = new List<GrammerRule> {
